@@ -1,6 +1,7 @@
 import "../AboutMe/AboutMe.css";
 import foto from "../../../images/me_avtor.jpg";
 import arrow from "../../../images/arrow.svg";
+import { Link } from "react-router-dom";
 
 function AboutMe() {
   return (
@@ -27,20 +28,20 @@ function AboutMe() {
         </div>
       </div>
       <h3 className="aboutMe__description">Портфолио</h3>
-      <div className="aboutMe__type">
+      <Link className="aboutMe__type" to="https://mari150580.github.io/russian-travel/" target="_blank">
         <h2 className="aboutMe__type-title">Статичный сайт</h2>
         <img src={arrow} alt="Стрелка" className="aboutMe__arrow" />
-      </div>
+      </Link>
       <hr width="89%" size="2" align="center"></hr>
-      <div className="aboutMe__type">
+      <Link className="aboutMe__type" to="https://mari150580.github.io/russian-travel/" target="_blank">
         <h2 className="aboutMe__type-title">Адаптивный сайт</h2>
         <img src={arrow} alt="Стрелка" className="aboutMe__arrow" />
-      </div>
+      </Link> 
       <hr width="89%" size="2" align="center"></hr>
-      <div className="aboutMe__type">
+      <Link className="aboutMe__type" to="https://interesting-places.nomoredomains.rocks/" target="_blank">
         <h2 className="aboutMe__type-title">Одностраничное приложение</h2>
         <img src={arrow} alt="Стрелка" className="aboutMe__arrow" />
-      </div>
+      </Link>
     </section>
   );
 }

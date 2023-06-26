@@ -1,8 +1,8 @@
 .navtab {
     min-height: 66px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
     text-decoration-line: underline;
     color: #000000;
     background: #F5F5F5;
@@ -12,7 +12,7 @@
     max-width: 67px;
     min-height: 18px;
     padding: 0;
-    margin: 0 0 0 auto;
+    margin: 0;
     font-size: 13px;
     line-height: 16px;
     font-weight: 500;
@@ -40,9 +40,9 @@
 
 .navtab__student{
     max-width: 54px;
-    min-height: 16px;
+    min-height: 18px;
     padding: 0;
-    margin: 0 auto 0 0;
+    margin: 0;
     font-size: 13px;
     line-height: 16px;
     font-weight: 500;
@@ -56,13 +56,16 @@
     .navtab {
         min-height: 66px;
     }
-  }
-
-@media screen and (max-width: 555px) {
     .navtab__technology{
-        margin: 0 81px 0 64px;
+        margin: 0 40px 0 40px;
     }
   }
+  @media screen and (max-width: 400px) {
+  .project__line-3 {
+    font-size: 10px;
+    line-height: 12px;
+  }
+}
 
   @media screen and (max-width: 320px) {
     .navtab {
@@ -70,12 +73,12 @@
     }
 
     .navtab__progect{
-        line-height: 11px;
-        margin-top: 6px;
+        font-size: 11px;
+      
     }
     
     .navtab__technology{
-        margin: 2px 24px 0 24px;
+        margin: 0 24px 0 24px;
         font-size: 11px;
     }
 

@@ -36,7 +36,7 @@ function Heading() {
         <div className="heading__login">
           <p className="heading__account">Аккаунт</p>
           <Link to="/profile">
-            <button className="heading__button" type="submit">
+            <button className="heading__button" type="submit"> 
               <img src={manikin} alt="Логотип" className="heading__manikin" />
             </button>
           </Link>

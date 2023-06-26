@@ -8,7 +8,7 @@ function Login() {
   return (
     <div className="register">
       <header className="register__heading">
-        <Link to="/">
+      <Link to="/" className="register__heading-link">
           <img src={logo} alt="Логотип" className="register__heading_logo" />
         </Link>
         <h1 className="register__title">Рады видеть!</h1>

@@ -14,7 +14,7 @@ function Header() {
           <Link className="header__navigator_text" to="/singin">
             Войти
           </Link>
-        </button>
+        </button> 
       </div>
     </header>
   );

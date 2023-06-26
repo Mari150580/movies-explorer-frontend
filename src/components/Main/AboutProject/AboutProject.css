@@ -1,6 +1,7 @@
 .project {
   min-height: 608px;
   background: #ffffff;
+ 
 }
 
 .project__text {
@@ -97,12 +98,13 @@
   line-height: 17px;
   text-align: center;
   color: #a0a0a0;
-  margin-bottom: 110px;
+  padding-bottom: 110px;
 }
 
 @media screen and (max-width: 768px) {
   .project {
     min-height: 585px;
+   
   }
   .project__text {
     margin: 0 auto 23px 50px;
@@ -117,17 +119,52 @@
   .project__line {
     margin: 0 50px 0 50px;
   }
+
+  .project__line-3 {
+    padding-bottom: 90px;
+  }
 }
 
-@media screen and (max-width: 360px) {
+
+@media screen and (max-width: 660px) {
+  .project__heading {
+    margin: 70px 20px 93px 20px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .project__term {
+    font-size: 20px;
+    line-height: 20px;
+  }
+  .project__stage {
+    font-size: 20px;
+    line-height: 20px;
+  }
+  .line-1 {
+    font-size: 10px;
+    line-height: 10px;
+  } 
+  .project__line-3 {
+    font-size: 10px;
+    line-height: 12px;
+  }
+}
+
+@media screen and (max-width: 370px) {
   .project__line {
     margin: 0 5px 0 5px;
+  }
+  .project{
+    padding-bottom: 50px;
+
   }
 }
 
 @media screen and (max-width: 320px) {
   .project {
-    min-height: 641px;
+    min-height: 604px;
+    padding-bottom: 0;
   }
   .project__text {
     margin: 0 auto 28px 18px;
@@ -168,7 +205,9 @@
 
   .project__line {
     margin: 0 18px 0 18px;
+      row-gap: 10px;
   }
+
   .line-1 {
     font-size: 11px;
     line-height: 13px;
@@ -177,5 +216,6 @@
     font-weight: 400;
     font-size: 11px;
     line-height: 13px;
+    padding-bottom: 70px;
   }
 }

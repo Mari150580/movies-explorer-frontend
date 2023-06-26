@@ -15,7 +15,7 @@ function Techs() {
           дипломном проекте.
         </h2>
       </div>
-      <div className="techs__icons">
+      <div className="techs__icons"> 
         <button className="techs__icon">HTML</button>
         <button className="techs__icon">CSS</button>
         <button className="techs__icon">JS</button>

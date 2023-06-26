@@ -12,14 +12,14 @@ function SearchForm() {
             name="film"
             placeholder="Фильм"
             minLength={2}
-            maxLength={30}
+            maxLength={30} 
             id="film"
             required=""
           />
         </form>
         <button className="searchForm__button" type="button">
           Найти
-        </button>
+        </button> 
       </div>
       <FilterCheckbox />
       <hr className="line"></hr>

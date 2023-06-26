@@ -16,7 +16,7 @@
 .heading__movies {
   display: flex;
   flex-direction: row;
-  min-height: 74px;
+  min-height: 74px; 
 }
 
 .heading__logo {
@@ -82,7 +82,7 @@
   cursor: pointer;
   margin: 21px 70px 23px 0;
   padding: 0;
-  border-color: #f9f9f9;
+  border: #f9f9f9;
   border-radius: 6px;
 }
 

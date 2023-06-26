@@ -7,7 +7,7 @@ function AboutProject() {
         О проекте
       </h2>
       <hr width="89%" size="2" align="center"></hr>
-      <div className="project__heading">
+      <div className="project__heading"> 
         <div className="project__column-one">
           <h2 className="project__stage">Дипломный проект включал 5 этапов</h2>
           <h2 className="project__title-stage">
