@@ -24,7 +24,7 @@ function Register() {
           minLength={2}
           maxLength={30}
           id="name"
-          required=""
+          required
         />
         <h3 className="register__form-title">email</h3>
         <input
@@ -35,7 +35,7 @@ function Register() {
           minLength={2}
           maxLength={30}
           id="email"
-          required=""
+          required
         />
         <h3 className="register__form-title">Пароль</h3>
         <input

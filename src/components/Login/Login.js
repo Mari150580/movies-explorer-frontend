@@ -23,7 +23,7 @@ function Login() {
           minLength={2}
           maxLength={30}
           id="email"
-          required=""
+          required
         />
         <hr className="login__form-email_line"></hr>
         <h3 className="register__form-title">Пароль</h3>
@@ -35,7 +35,7 @@ function Login() {
           minLength={4}
           maxLength={30}
           id="password"
-          required=""
+          required
         />
         <hr className="login__form-email_line"></hr>
         <Link className="register__form-button_nav" to="/movies">

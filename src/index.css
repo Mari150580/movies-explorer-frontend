@@ -1,3 +1,6 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts/inter.css);
+
 body {
   margin: 0;
   font-family: "Inter", "Arial", "Helvetica", sans-serif;
@@ -11,3 +14,4 @@ body {
   margin-right: auto;
   background: #E5E5E5;
 }
+

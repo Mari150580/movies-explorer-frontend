@@ -7,14 +7,14 @@ function SearchForm() {
       <div className="searchForm__form">
         <form className="searchForm__film">
           <input
-            type="film"
+            type="name"
             className="searchForm__form-film"
             name="film"
             placeholder="Фильм"
             minLength={2}
             maxLength={30} 
             id="film"
-            required=""
+            required
           />
         </form>
         <button className="searchForm__button" type="button">

@@ -15,7 +15,7 @@
   margin: 0;
   padding: 0;
   max-width: 270px;
-  min-height: 218px;
+  height: 218px;
   border-radius: 10px;
   background-color: #dcdcdc;
   background-color: #fdfdfd;
@@ -127,7 +127,7 @@
 
   .element {
     max-width: 339px;
-    min-height: 257px;
+    height: 257px;
   }
 
   .element__image {
@@ -148,7 +148,7 @@
   }
   .element {
     max-width: 430px;
-    min-height: 270px;
+    height: 270px;
   }
 }
 
@@ -165,7 +165,7 @@
 
   .element {
     max-width: 300px;
-    min-height: 235px;
+    height: 235px;
   }
 
   .element__image {
