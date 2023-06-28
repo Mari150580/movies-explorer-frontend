@@ -27,6 +27,7 @@ function Login() {
         />
         <hr className="login__form-email_line"></hr>
         <h3 className="register__form-title">Пароль</h3>
+        
         <input
           type="password"
           className="login__form-name"
