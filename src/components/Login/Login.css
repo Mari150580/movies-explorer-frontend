@@ -1,0 +1,51 @@
+.register__form-title {
+  margin-bottom: 5px;
+}
+
+.login__form-name {
+  min-height: 17px;
+  max-width: 396px;
+  background-color: #ffffff;
+  border: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.login__form-email_line {
+  border-bottom: 1px solid #e8e8e8;
+  max-width: 396px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 24px;
+}
+
+.login__form-email_line:last-of-type {
+  margin-bottom: 152px;
+}
+
+.register__form-entrance_button {
+  max-width: 89px;
+}
+
+@media screen and (max-width: 768px) {
+  .register__form-title {
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .login__form-email_line {
+    max-width: 260px;
+  }
+
+  .login__form-name {
+    max-width: 260px;
+  }
+
+  .register__form-entrance_button {
+    max-width: 76px;
+  }
+}

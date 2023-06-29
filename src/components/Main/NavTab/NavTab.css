@@ -1,0 +1,88 @@
+.navtab {
+    min-height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration-line: underline;
+    color: #000000;
+    background: #F5F5F5;
+}
+
+.navtab__progect{
+    max-width: 67px;
+    min-height: 18px;
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.navtab__progect:hover {
+    opacity: 50%;
+  }
+
+.navtab__technology{
+    max-width: 75px;
+    min-height: 18px;
+    padding: 0;
+    margin: 0 181px 0 164px;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.navtab__technology:hover {
+    opacity: 50%;
+  }
+
+.navtab__student{
+    max-width: 54px;
+    min-height: 18px;
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+    color: #000000;
+}
+.navtab__student:hover {
+    opacity: 50%;
+  }
+
+@media screen and (max-width: 768px) {
+    .navtab {
+        min-height: 66px;
+    }
+    .navtab__technology{
+        margin: 0 40px 0 40px;
+    }
+  }
+  @media screen and (max-width: 400px) {
+  .project__line-3 {
+    font-size: 10px;
+    line-height: 12px;
+  }
+}
+
+  @media screen and (max-width: 320px) {
+    .navtab {
+        min-height: 71px;
+    }
+
+    .navtab__progect{
+        font-size: 11px;
+      
+    }
+    
+    .navtab__technology{
+        margin: 0 24px 0 24px;
+        font-size: 11px;
+    }
+
+    .navtab__student{
+        font-size: 11px;
+    }
+  }

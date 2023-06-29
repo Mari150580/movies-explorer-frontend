@@ -1,0 +1,96 @@
+.header {
+  max-width: 1280px;
+  min-height: 74px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background: #465dff;
+  font-family: "Inter";
+  font-style: normal;
+}
+
+.header__logo {
+  max-width: 38px;
+  min-height: 38px;
+  padding: 9px 0 27px 69px;
+}
+
+.header__navigator {
+  display: flex;
+  align-self: center;
+}
+
+.header__navigator_button {
+  color: #ffffff;
+  min-width: 76px;
+  min-height: 32px;
+  cursor: pointer;
+  margin: 21px 70px 21px 0;
+  padding: 0;
+  background-color: #2be080;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  border: #2be080;
+ 
+}
+
+.header__navigator_button:hover {
+  opacity: 50%;
+}
+
+.header__navigator_text {
+  color: #ffffff;
+  font-family: "Inter";
+}
+
+.header__navigator_regicter {
+  color: #ffffff;
+  min-width: 84px;
+  min-height: 24px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  margin: 0;
+  cursor: pointer;
+  margin: 29px 52px 21px 0;
+  padding: 0;
+}
+
+.header__navigator_regicter:hover {
+  opacity: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .header__navigator_regicter {
+    margin: 29px 30px 0 0;
+    min-width: 77px;
+    min-height: 16px;
+  }
+  .header__navigator_button {
+    margin: 21px 30px 21px 0;
+  }
+  .header__logo {
+    padding: 18px 0 18px 30px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header__navigator_regicter {
+    margin: 29px 30px 0 0;
+    min-width: 64px;
+    font-size: 10px;
+  }
+  .header__navigator_button {
+    margin: 24px 14px 24px 0;
+    min-width: 54px;
+    min-height: 26px;
+    font-size: 10px;
+  }
+  .header__logo {
+    padding: 18px 0 18px 14px;
+  }
+}
