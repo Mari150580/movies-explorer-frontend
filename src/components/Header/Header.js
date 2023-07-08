@@ -11,7 +11,7 @@ function Header() {
           Регистрация
         </Link>
         <button className="header__navigator_button" type="button">
-          <Link className="header__navigator_text" to="/singin">
+          <Link className="header__navigator_text" to="/signin">
             Войти
           </Link>
         </button> 

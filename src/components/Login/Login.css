@@ -30,6 +30,17 @@
   max-width: 89px;
 }
 
+.register__form_button_disabled{
+  opacity: 50%;
+  width: 396px;
+  margin-top: 69px;
+  margin-bottom: 16px;
+  height: 45px;
+  background: #ff6838;
+  border-radius: 3px;
+  border: #ff6838;
+}
+
 @media screen and (max-width: 768px) {
   .register__form-title {
     margin-bottom: 5px;

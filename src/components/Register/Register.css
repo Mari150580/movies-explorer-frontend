@@ -78,6 +78,21 @@
   background: #ff6838;
   border-radius: 3px;
   border: #ff6838;
+  
+}
+
+.register__form_button_disabled{
+  opacity: 50%;
+  width: 396px;
+  margin-top: 69px;
+  margin-bottom: 16px;
+  height: 45px;
+  background: #ff6838;
+  border-radius: 3px;
+  border: #ff6838;
+}
+
+.register__form-button_text{
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;

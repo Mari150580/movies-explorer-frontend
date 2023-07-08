@@ -5,12 +5,13 @@ import Footer from "../Footer/Footer";
 import Card from "./Card/Card";
 import Addition from "./Addition/Addition";
 
-function Movies() {
+function Movies(card) {
+
   return (
     <section className="movies">
       <Heading />
       <SearchForm />
-      <Card />
+      <Card  card={card}/>
       <Addition />
       <Footer />
     </section>

@@ -63,6 +63,9 @@
   min-height: 16px;
   margin: 210px auto 16px auto;
   text-align: center;
+  outline: none;
+  cursor: pointer;
+
 }
 
 .profileForm__exit {
