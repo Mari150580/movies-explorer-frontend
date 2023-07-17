@@ -1,13 +1,13 @@
 import "../Addition/Addition.css";
 
-function Addition() {
-  return (
-    <section className="addition">
-      <button className="addition__button" type="button">
-        Еще
-      </button>
-    </section>
-  );
+function Addition({handleMore}) {
+    return (
+        <section className="addition">
+            <button className="addition__button" type="button" onClick={handleMore}>
+                Еще
+            </button>
+        </section>
+    );
 }
 
 export default Addition;

@@ -1,81 +1,73 @@
 import "../Card/Card.css";
 
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
+import Removal from "../../Removal/Removal";
 
-function Card(card,  savedMovies,) {
-  const [like, setLike] = useState(false);
+/* Флаг isSavedMovies передается из компонентов выше,
+* чтобы его можно было использовать и в movies и в saved-movies */
+function Card({card, savedMovies, ToggleMovieLike, isSavedMovies}) {
+    const [like, setLike] = useState(false);
 
- 
+    /* Если savedMovies менеяется, необходимо переосмыслить
+    * расстановку зеленых флажков. В зависимости вставлен card.id
+    * просто из общепринятых соображений. Если в useEffect-deps
+    * Есть зависимость, она должна быть в массиве, если это возможно.
+    * И правда, а вдруг с обновлениями мы начнем модифицировать id карточек... */
+    useEffect(() => {
+        const likedMovie = savedMovies.filter((movie) => {
+            return movie.movieId === card.id;
+        });
+        setLike(likedMovie.length > 0 ? true : false);
+    }, [savedMovies, card.id]);
 
- /*const cardd = cards.cards.cards;
-
-console.log(cardd)
-const { path } = useRouteMatch();
-
-const card =cardd.map((cards) => {
-  console.log(cards.id)
-  return cards
-  })*/
-
-  function toggleLike() {
-    if (!like) {
-      setLike(true);
-    } else {
-      setLike(false);
+    function countDuration(number) {
+        const hours = Math.floor(number / 60);
+        const minutes = number % 60;
+        const formatTime = hours + "ч" + minutes + "м";
+        return formatTime;
     }
-  }
 
-  
-
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    console.log(token)
-      if (token) {
-      savedMovies.some((item) => {
-        if (item.movieId === card.id) {
-          setLike(true);
-          document.getElementById(card.id).checked = true
-        }
-      })
+    function handleLikeToggle() {
+        // Получаем из всех сохраненных фильмов фильм с таким же id (если есть)
+        const likedMovie = savedMovies.filter((movie) => {
+            return movie.movieId === card.id;
+        });
+        /* Если в списке что-то есть, значит он нашелся - лайк снимаем,
+        * иначе ставим (и тогда передавать _id необходимости нет) */
+        ToggleMovieLike({...card, _id: likedMovie.length > 0 ? likedMovie[0]._id : null}, !like);
     }
-  }, [])
 
- /* const changeSrcImg = (
-    `${(path !== '/saved-movies') ? `https://api.nomoreparties.co${card.image.url}` : card.image}`
-  );*/
+    /* Эта функция обрабатывает страницу сохраненных фильмов,
+    * соответственно ToggleMovieLike может работать только как false*/
+    function handleLikeRemoval() {
+        ToggleMovieLike(card);
+    }
 
-  function countDuration(number) {
-    const hours = Math.floor(number / 60);
-    const minutes = number % 60;
-    const formatTime = hours + "ч" + minutes + "м";
-    return formatTime;
-  }
+    return (
+        <article className="element">
+            <a href={card.trailerLink} target="_blank" rel="noopener noreferrer" className="">
+                {isSavedMovies ? (
+                    <img className="element__image" src={card.image} alt="карточка фильма"/>
+                ) : (
+                    <img className="element__image" src={`https://api.nomoreparties.co${card.image.url}`}
+                         alt="карточка фильма"/>
+                )}
 
-  return (
-    <section className="elements">
-    <article className="element">
-
-    <a href={card.trailerLink} target="_blank" rel="noopener noreferrer" className="">
-    <img className="element__image"  alt="карточка фильма" />
-      </a>
-      
-      <div className="element__point">
-        <h2 className="element__title">{card.nameRU}</h2>
-       {/* <div
-          onClick={() => setLike(!like)}
-          className={
-            like ? ["element__like_active"].join("") : "element__like"
-          }
-        ></div> */}
-      </div>
-      <span className="element__duration"> {countDuration(card.duration)} </span>
-    </article>
-  
-        </section>
-  
-   
-  );
+            </a>
+            <div className="element__point">
+                <h2 className="element__title">{card.nameRU}</h2>
+                <div className="element__btns">
+                    {isSavedMovies ? (
+                        <Removal handleLikeRemoval={handleLikeRemoval} />
+                    ) : (
+                        <button type="button" className={`element__like${like ? '_active' : ''}`}
+                                onClick={handleLikeToggle}/>
+                    )}
+                </div>
+            </div>
+            <span className="element__duration"> {countDuration(card.duration)} </span>
+        </article>
+    );
 }
 
 export default Card;

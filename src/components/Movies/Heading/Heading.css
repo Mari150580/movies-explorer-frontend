@@ -1,263 +1,269 @@
 .heading {
-  min-height: 74px;
-  background: #ffffff;
+    min-height: 74px;
+    background: #ffffff;
 }
+
 .heading__menu {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .heading__menu_activ {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
+
 .heading__movies {
-  display: flex;
-  flex-direction: row;
-  min-height: 74px; 
+    display: flex;
+    flex-direction: row;
+    min-height: 74px;
 }
 
 .heading__logo {
-  max-width: 38px;
-  min-height: 38px;
-  padding: 18px 0 18px 70px;
+    max-width: 38px;
+    min-height: 38px;
+    padding: 18px 0 18px 70px;
 }
 
 .heading__logo:hover {
-  opacity: 50%;
+    opacity: 50%;
 }
 
 .heading__link {
-  margin-left: 44px;
-  margin-right: 16px;
-  margin-top: 28px;
-  margin-bottom: 28px;
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 18px;
-  color: #000000;
-  text-decoration: none;
+    margin-left: 44px;
+    margin-right: 16px;
+    margin-top: 28px;
+    margin-bottom: 28px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    color: #000000;
+    text-decoration: none;
 }
 
 .heading__link:hover {
-  opacity: 50%;
+    opacity: 50%;
 }
 
 .heading__regicter {
-  margin: 28px 0 28px 0;
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 18px;
-  color: #000000;
-  text-decoration: none;
+    margin: 28px 0 28px 0;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    color: #000000;
+    text-decoration: none;
 }
 
 .heading__regicter:hover {
-  opacity: 50%;
+    opacity: 50%;
 }
 
 .heading__login {
-  display: flex;
+    display: flex;
 }
 
 .heading__account {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
-  margin: 28px 13px 28px 0;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 28px 13px 28px 0;
 }
 
 .heading__button {
-  background-color: #f9f9f9;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  margin: 21px 70px 23px 0;
-  padding: 0;
-  border: #f9f9f9;
-  border-radius: 6px;
+    background-color: #f9f9f9;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin: 21px 70px 23px 0;
+    padding: 0;
+    border: #f9f9f9;
+    border-radius: 6px;
 }
 
 .heading__button:hover {
-  opacity: 50%;
+    opacity: 50%;
 }
 
 .heading__burger {
-  display: none;
+    display: none;
 }
 
 .heading__logo_text {
-  display: none;
+    display: none;
 }
 
 .heading__logo-burger {
-  display: none;
+    display: none;
 }
+
 .heading__logo_burger {
-  background-color: #ffffff;
+    background-color: #ffffff;
 }
 
 @media screen and (max-width: 768px) {
-  .heading__burger {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    top: 22px;
-    right: 38px;
-    width: 44px;
-    height: 44px;
-    cursor: pointer;
-    z-index: 12;
-  }
-  .heading__burger:hover {
-    opacity: 50%;
-  }
-
-  /* .heading__burger > span,
-      .heading__burger > span::before,
-      .heading__burger > span::after {
-        display: block;
+    .heading__burger {
+        display: flex;
+        align-items: center;
         position: absolute;
-        width: 28px;
-        height: 3px;
-        background: #000000;
-        transition-duration: .25s;
-        
-      }
-      .heading__burger > span::before {
-        content: '';
-        top: -8px;
-      }
-      .heading__burger > span::after {
-        content: '';
-        top: 8px;
-      }
-*/
-
-  .heading__menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: space-between;
-    max-width: 520px;
-    min-height: 100vh;
-    position: fixed;
-    left: 230px;
-    right: 0;
-    bottom: 0;
-    z-index: 10;
-    transition: left 1s;
-    background-color: #ffffff;
-    padding-bottom: 92px;
-  }
-
-  .heading__menu_activ {
-    display: none;
-  }
-
-  .heading__movies {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 257px;
-  }
-
-  .heading__login {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .heading__logo {
-    display: none;
-  }
-  /*одеть экран в класс без хедела и сделать сверхе темный фон логотип выкинуть из nav*/
-
-  .heading__logo_text {
-    display: block;
-    font-family: Inter;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 22px;
-    letter-spacing: 0px;
-    text-align: center;
-    color: #000000;
-    margin: 0;
-  }
-
-  .heading__logo_link {
-    text-decoration: none;
-  }
-
-  .heading__link {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 28px;
-    margin-bottom: 28px;
-    font-size: 18px;
-    line-height: 22px;
-    text-align: center;
-    text-decoration: underline;
-  }
-
-  .heading__regicter {
-    margin: 0;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 22px;
-    text-align: center;
-  }
-
-  .heading__button {
-    margin: 0;
-  }
-  .heading__account {
-    margin: 0;
-    margin-top: 7px;
-    margin-right: 13px;
-    text-align: center;
-  }
-
-  .heading__logo-burger {
-    display: block;
-    padding: 15px 0 10px 50px;
-    position: absolute;
-    z-index: 11;
-  }
-
-  .heading__logo-burger:hover {
-    opacity: 50%;
-  }
-
-  @media screen and (max-width: 630px) {
-    .heading__menu {
-      left: 90px;
+        top: 22px;
+        right: 38px;
+        width: 44px;
+        height: 44px;
+        cursor: pointer;
+        z-index: 12;
     }
-  }
-}
-@media screen and (max-width: 320px) {
-  .heading__logo-burger {
-    padding: 18px 0 18px 14px;
-  }
-  .heading__burger {
-    right: 23px;
-    width: 40px;
-    height: 43px;
-  }
 
-  .heading__menu {
-    max-width: 320px;
-    left: 0;
-  }
+    .heading__burger:hover {
+        opacity: 50%;
+    }
+
+    /* .heading__burger > span,
+        .heading__burger > span::before,
+        .heading__burger > span::after {
+          display: block;
+          position: absolute;
+          width: 28px;
+          height: 3px;
+          background: #000000;
+          transition-duration: .25s;
+
+        }
+        .heading__burger > span::before {
+          content: '';
+          top: -8px;
+        }
+        .heading__burger > span::after {
+          content: '';
+          top: 8px;
+        }
+  */
+    .heading__menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: space-between;
+        max-width: 520px;
+        min-height: 100vh;
+        position: fixed;
+        left: 230px;
+        right: 0;
+        bottom: 0;
+        z-index: 10;
+        transition: left 1s;
+        background-color: #ffffff;
+        padding-bottom: 92px;
+    }
+
+    .heading__menu_activ {
+        display: none;
+    }
+
+    .heading__movies {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 257px;
+    }
+
+    .heading__login {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .heading__logo {
+        display: none;
+    }
+
+    /*одеть экран в класс без хедела и сделать сверхе темный фон логотип выкинуть из nav*/
+    .heading__logo_text {
+        display: block;
+        font-family: Inter;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 22px;
+        letter-spacing: 0px;
+        text-align: center;
+        color: #000000;
+        margin: 0;
+    }
+
+    .heading__logo_link {
+        text-decoration: none;
+    }
+
+    .heading__link {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 28px;
+        margin-bottom: 28px;
+        font-size: 18px;
+        line-height: 22px;
+        text-align: center;
+        text-decoration: underline;
+    }
+
+    .heading__regicter {
+        margin: 0;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        text-align: center;
+    }
+
+    .heading__button {
+        margin: 0;
+    }
+
+    .heading__account {
+        margin: 0;
+        margin-top: 7px;
+        margin-right: 13px;
+        text-align: center;
+    }
+
+    .heading__logo-burger {
+        display: block;
+        padding: 15px 0 10px 50px;
+        position: absolute;
+        z-index: 11;
+    }
+
+    .heading__logo-burger:hover {
+        opacity: 50%;
+    }
+
+    @media screen and (max-width: 630px) {
+        .heading__menu {
+            left: 90px;
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .heading__logo-burger {
+        padding: 18px 0 18px 14px;
+    }
+
+    .heading__burger {
+        right: 23px;
+        width: 40px;
+        height: 43px;
+    }
+
+    .heading__menu {
+        max-width: 320px;
+        left: 0;
+    }
 }

@@ -1,6 +1,6 @@
 const configs = {
-   //url: "https://filmoteca-back.nomoredomains.rocks",
-   url: "http://localhost:3000",
+   url: "https://filmoteca-back.nomoredomains.rocks",
+   //url: "http://localhost:3000",
      headers: {
        "content-type": "application/json",
      },
@@ -33,6 +33,7 @@ const configs = {
          method: "GET",
          headers: this._headers,
        }).then((response) => {
+        console.log(response);
          return this.#onResponse(response);
        });
      }
@@ -49,9 +50,6 @@ const configs = {
          return this.#onResponse(response);
        });
      }
-
-
-
 
 
    }

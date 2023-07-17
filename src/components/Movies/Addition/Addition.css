@@ -1,39 +1,39 @@
 .addition {
-  min-height: 166px;
-  display: flex;
-  justify-content: center;
+    min-height: 166px;
+    display: flex;
+    justify-content: center;
 }
 
 .addition__button {
-  width: 1140px;
-  min-height: 36px;
-  margin: 70px 0 80px 0;
-  cursor: pointer;
-  padding: 0;
-  background: #f9f9f9;
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 15px;
-  color: #000000;
-  border-radius: 6px;
-  border: 1px solid #f9f9f9;
+    width: 1140px;
+    min-height: 36px;
+    margin: 30px 0 80px 0;
+    cursor: pointer;
+    padding: 0;
+    background: #f9f9f9;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: #000000;
+    border-radius: 6px;
+    border: 1px solid #f9f9f9;
 }
 
 .addition__button:hover {
-  opacity: 50%;
+    opacity: 50%;
 }
 
 @media screen and (max-width: 768px) {
-  .addition__button {
-    width: 708px;
-    margin: 50px 0 80px 0;
-  }
+    .addition__button {
+        width: 708px;
+        margin: 10px 0 80px 0;
+    }
 }
 
 @media screen and (max-width: 320px) {
-  .addition__button {
-    width: 300px;
-  }
+    .addition__button {
+        width: 300px;
+    }
 }
