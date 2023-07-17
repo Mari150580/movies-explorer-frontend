@@ -22,9 +22,6 @@ function App(resetValidation) {
     const [savedMovies, setSavedMovies] = useState([]);
     const [currentUser, setCurrentUser] = useState({});
 
-    /* Стоит отметить, что на данном этапе переменная не используется, но задается в стр.38 (App.js) */
-    // const [emailReg, setEmailReg] = useState("");
-
     /* Установка навигации */
     const navigate = useNavigate();
 
@@ -35,7 +32,6 @@ function App(resetValidation) {
             .then((data) => {
                 if (data.jwt) {
                     setLoggedIn(true);
-                    // setEmailReg(email);
                     localStorage.setItem("jwt", data.jwt);
                     navigate("/movies", {replace: true});
                 }
@@ -62,11 +58,7 @@ function App(resetValidation) {
     /*Заход данных с сервера:
     * --Информация о пользователе
     * --Сохраненные пользователем фильмы
-    * повторная установка флага loggedIn необходима для красоты,
-    * иначе, если пользователь загружает сайт будучи уже авторизлованным,
-    * то его сначала перешлет на signin, а потом тут же на movies
-    * Обновлять их нужно, конечно, если пользователь логинится.
-    * По пути происходит первичная установка всех токенов.*/
+   */
     useEffect(() => {
         const jwt = localStorage.getItem("jwt");
         if (jwt) {
@@ -96,8 +88,6 @@ function App(resetValidation) {
                 .then((data) => {
                     setLoggedIn(true);
                     setCurrentUser(data);
-                    // setEmailReg(data.email);
-                    // navigate("/movies");
                     setIsLoading(false);
                 })
                 .catch(function (err) {
@@ -105,16 +95,10 @@ function App(resetValidation) {
                     setIsLoading(false);
                 });
         }
-        /* Так как нам всё-же необходимо пользоваться навигацией
-        * единоразово при загрузке страницы, попросим линтер молчать. */
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+       
     }, []);
 
-    /* Смена данных профиля:
-    * Обновление токена не требуется, так как
-    * единственный валидный способ его получения - вход через signin.
-    * Вызывается callback функция для
-    * отображения сообщения на странице пользователя */
+    /* Смена данных профиля */
     function handleUpdateUser({name, email, callbackError}) {
         let message = "";
         let okStatus = true;
@@ -158,7 +142,6 @@ function App(resetValidation) {
                                    <Register
                                        handleRegister={handleRegister}
                                        nameError={nameError}
-
                                    />
 
                                }
@@ -207,7 +190,6 @@ function App(resetValidation) {
                                 />
                             }
                         />
-
 
                         <Route path="*" element={<ErrorForm/>}/>
 

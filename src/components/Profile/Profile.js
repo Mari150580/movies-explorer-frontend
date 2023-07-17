@@ -28,7 +28,7 @@ function Profile({handleUpdateUser, onSignOut}) {
 
     }, [currentUser]);
 
-    /* Общий принцип работы валидатора и ограничения нажатий см. в Login.js */
+
     useEffect(() => {
         const formValid = Object.values(errors).every((error) => error === "");
         setFormValid(formValid);
@@ -53,9 +53,6 @@ function Profile({handleUpdateUser, onSignOut}) {
         onSignOut();
     }
 
-    /* Особенность: для отображения результата запроса к серверу
-    * (который происходит в компоненте-родителе) необходима
-    * колл-бек функция. */
     function callbackMessage(message, okStatus) {
         setMessage(message);
         setOkStatus(okStatus);

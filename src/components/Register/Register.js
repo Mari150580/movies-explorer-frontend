@@ -14,7 +14,6 @@ function Register({handleRegister, nameError}) {
     const [errors, setErrors] = useState({name: "initial", email: "initial", password: "initial"});
     const [formValid, setFormValid] = useState(false);
 
-    /* Процесс валидации такой же, как в Login.js */
     useEffect(() => {
         const formValid = Object.values(errors).every((error) => error === "");
         setFormValid(formValid);
@@ -92,8 +91,6 @@ function Register({handleRegister, nameError}) {
                     onChange={handleChange}
                 />
                 <span className="register__form-error">{nameError}</span>
-
-                {/*  <button className={`register__form_button_disabled ${formValid ? 'register__form-button' : ''}`} type="submit">*/}
                 <button className={`register__form-button${formValid ? '' : '_disabled'}`} type="submit">
                     <h2 className="register__form-button_text"> Зарегистрироваться</h2>
                 </button>

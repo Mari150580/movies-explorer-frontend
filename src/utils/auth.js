@@ -1,5 +1,4 @@
 export const BASE_URL = "https://filmoteca-back.nomoredomains.rocks";
-
 //export const BASE_URL ="http://localhost:3000";
 /*проверка res если ок то верни json если нет выведи ошибку*/
 const getResponse = (res) => {

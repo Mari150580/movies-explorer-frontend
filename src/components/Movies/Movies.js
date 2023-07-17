@@ -27,7 +27,6 @@ function Movies({savedMovies, setSavedMovies}) {
             setMoviesCount(cardsCount);
             setMoreMoviesCount(moreCardsCount);
         }
-
         window.addEventListener('resize', handleResize);
         handleResize()
         return () => window.removeEventListener('resize', handleResize);
@@ -44,23 +43,12 @@ function Movies({savedMovies, setSavedMovies}) {
         }
     }, []);
 
-    /* Для комфорта пользователя, если разрешение увеличилось
-    * в большую сторону, увеличиваем число отображаемых фильмов до минимума при текущем разрешении.
-    * Проверка на поисковый запрос нужна из требования не отображать полученные фильмы
-    * до ввода запроса (хотя код это замечательно позволяет) */
+    
     useEffect(() => {
         if (shownMovies.length < moviesCount && currentSearchString) handleSearch(currentSearchString).then(() => {});
-        /* Опять же, сюда все deps никак не поместить, сломается функционал.
-        * Придется сообщить линтеру, что так и планировалось */
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [moviesCount]);
 
-    /* Лайко-переключалка. Асинхронность требуется из-за соединения с сервером.
-    * Если лайк снимается, удаляем фильм по соответствующему запросу, если
-    * ставится - добавляем (исправлено поле trailer --> trailerLink).
-    * Сразу тут же обновляем свой список соответствующим образом.
-    * Тут уже видится необходимым обновить токен, если авторизованный пользователь
-    * зашел сразу на эту страницу. */
     async function ToggleMovieLike(movie, isLiked) {
         if (!isLiked) {
             try {
@@ -103,36 +91,16 @@ function Movies({savedMovies, setSavedMovies}) {
         }
     }
 
-    /* Корректировка, делает фильтрацию, согласно критериям, лучше 
-    useEffect(() => {
-        // Пытаемся достать карточки из localStorage (получали с сервера)
-        let cards = JSON.parse(localStorage.getItem("cards"));
-        if (cards.length > 0 && currentSearchString) {
-            localStorage.setItem("filterEnabled", JSON.stringify(filterEnabled));
-            handleSearch(currentSearchString).then(() => {});
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [filterEnabled]);*/
-
     async function handleSearch(inputString) {
-        // запускаем крутилку!
         setPreloader(true);
-
-        // Пытаемся достать карточки из localStorage (получали с сервера)
         let cards = JSON.parse(localStorage.getItem("cards"));
 
-        // Если не получилось, необходимо сделать запрос к серверу
         if (!cards) {
-            /* И если промис разрешился в нашу пользу,
-            * то флаг "ошибка при поиске" выключается */
             try {
                 cards = await apiMovies.getAllMovies();
                 localStorage.setItem("cards", JSON.stringify(cards));
                 setSearchErrorMessage(false);
             } catch (error) {
-                /* А вот если не получилось, необходимо не только сообщить об ошибке,
-                * Крутилку тоже выключить, в фильмы нужно поместить пустые массивы
-                * для избежания ошибок с методами массивов и прекращаемся */
                 setSearchErrorMessage(true);
                 setCurrentSearchString(inputString);
                 localStorage.setItem("currentSearchString", inputString);
@@ -144,18 +112,12 @@ function Movies({savedMovies, setSavedMovies}) {
             }
         }
 
-        /* Обрабатывая данные, не забываем все сохранить и отсеять по поиску.
-        * (состояние moviesCount, которое мы задавали выше)
-        * Фильтрация по названиям на двух языках и (закомментировано) по описанию.
-        * Обновляем состояния отображаемых фильмов в соответствии с размером экрана.
-        * Крутилку выключить! */
         localStorage.setItem("currentSearchString", inputString);
         localStorage.setItem("filterEnabled", JSON.stringify(filterEnabled));
 
         let filteredMovies = cards.filter(({nameRU, nameEN, description}) =>
                 nameRU.toLowerCase().includes(inputString.toLowerCase())
                 || nameEN.toLowerCase().includes(inputString.toLowerCase())
-            // || description.toLowerCase().includes(inputString.toLowerCase())
         );
 
         if (filterEnabled) {
@@ -176,14 +138,7 @@ function Movies({savedMovies, setSavedMovies}) {
         }
     }
 
-    /* Чтобы отобразить больше фильмов, достаточно "отрезать" из оставшихся и "прикрепить" к отображаемым.
-    * Для удобства при уменьшении экрана мы количество карточек на экране не уменьшали,
-    * но дополнительно отображаем по 4 строчки на размер экрана. */
     function handleMore() {
-        /* Если уж добавляем "по одному в ряд", то пускай для случая неполного ряда
-        * (это происходит при уменьшении разрешения экрана, лучше не убирать карточки
-        * автоматически, это очень вредно для UX...)
-        * будем дополнительно отображать "недостающие". По остаткам понятно, сколько надо. */
         let moviesToAdd = shownMovies.length % moreMoviesCount ?
             moreMoviesCount*2 - shownMovies.length % moreMoviesCount : moreMoviesCount;
 
@@ -191,27 +146,16 @@ function Movies({savedMovies, setSavedMovies}) {
         setRemainingMovies(remainingMovies.slice(moviesToAdd));
     }
 
-    /* Количество карточек на экране определяется по конфигу, связаны с разрешением.
-    * Названия для читаемости. */
     function minMoviesCount() {
         let cardsCount = 0, moreCardsCount = 0;
         const windowWidth = window.innerWidth;
         const countConfig = {
-            // Формат
-            // MODE: [minresolution, cardscount, addingcardscount]
-            // ####
-            // ####
-            // Изменено для подгрузки "как в условии"!!!!!!
-            // ####
-            // ####
             Phone: [0, 5, 5],
             Tablet: [560, 8, 2],
             SmallPC: [850, 12, 3],
             PC: [1138, 16, 4],
         };
 
-        /* Логика в том, что сортируя элементы по разрешению, обходя все мы закончим
-        * на самом большом подходящем. */
         Object.keys(countConfig)
             .sort((a, b) => countConfig[a] - countConfig[b])
             .forEach((key) => {

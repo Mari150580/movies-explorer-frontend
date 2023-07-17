@@ -1,18 +1,10 @@
 import "../Card/Card.css";
-
 import React, {useEffect, useState} from "react";
 import Removal from "../../Removal/Removal";
 
-/* Флаг isSavedMovies передается из компонентов выше,
-* чтобы его можно было использовать и в movies и в saved-movies */
 function Card({card, savedMovies, ToggleMovieLike, isSavedMovies}) {
     const [like, setLike] = useState(false);
 
-    /* Если savedMovies менеяется, необходимо переосмыслить
-    * расстановку зеленых флажков. В зависимости вставлен card.id
-    * просто из общепринятых соображений. Если в useEffect-deps
-    * Есть зависимость, она должна быть в массиве, если это возможно.
-    * И правда, а вдруг с обновлениями мы начнем модифицировать id карточек... */
     useEffect(() => {
         const likedMovie = savedMovies.filter((movie) => {
             return movie.movieId === card.id;

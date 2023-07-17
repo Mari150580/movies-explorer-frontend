@@ -1,8 +1,6 @@
 import './CardList.css';
 import Card from '../Card/Card';
 
-/* searchErrorMessage определяется при обработке запроса на фильмы,
-* Если true, то была ошибка с получением данных. */
 const CardList = ({shownMovies, ToggleMovieLike, savedMovies, isSavedMovies, searchErrorMessage}) => {
     return (
         <section className="cards">
