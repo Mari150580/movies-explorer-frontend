@@ -40,7 +40,10 @@ function SavedMovies({savedMovies, setSavedMovies}) {
             if (jwt) {
                 apiMovies.getToken(jwt);
                 apiMovies.deleteSavedMovie(movie._id).then(() => {
-                    const newSaved = savedMovies.filter((deletedMovie) => { return deletedMovie._id !== movie._id })
+                    const newSaved = savedMovies.filter((deletedMovie) => { 
+                        console.log(deletedMovie._id)
+                        return deletedMovie._id !== movie._id })
+                    console.log(movie._id)
                     setSavedMovies(newSaved);
                 });
             }

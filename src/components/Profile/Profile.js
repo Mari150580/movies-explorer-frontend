@@ -2,81 +2,110 @@ import "../Profile/Profile.css";
 import Heading from "../Movies/Heading/Heading";
 import React, {useEffect, useState} from "react";
 import {CurrentUserContext} from "../../contexts/CurrentUserContext/CurrentUserContext";
+import validator from 'validator';
 
 function Profile({handleUpdateUser, onSignOut}) {
     const [name, setName] = React.useState("");
     const [email, setEmail] = React.useState("");
-    const [errors, setErrors] = useState({name: "", email: ""});
-    const [formValid, setFormValid] = useState(false);
     const [okStatus, setOkStatus] = React.useState(true);
     const [message, setMessage] = React.useState("");
 
     // Подписка на контекст
     const currentUser = React.useContext(CurrentUserContext);
 
+    const [isValid, setIsValid] = useState(false);
+    const [isBtnActive, setIsBtnActive] = useState(false);
+    const [isInputChanged, setIsInputChanged] = useState(false);
+    const [errorMessageName, setErrorMessageName] = useState('');
+  const [errorMessageEmail, setErrorMessageEmail] = useState('');
+  
     // Подставляем данные пользователя в форму. После загрузки текущего пользователя из API
     // его данные будут использованы в управляемых компонентах.
     React.useEffect(() => {
-        if(currentUser.data){
-
             setName(currentUser.data.name);
-            setEmail(currentUser.data.email);
-        } else{
-            console.log(111)
-        }
-        
-
+            setEmail(currentUser.data.email);   
     }, [currentUser]);
 
+    function validationForm(e) {
+        setIsValid(e.target.closest("form").checkValidity());
+      }
 
-    useEffect(() => {
-        const formValid = Object.values(errors).every((error) => error === "");
-        setFormValid(formValid);
-    }, [errors]);
+      //активация кнопки если все правильно
+      useEffect(() => {
+        if (isValid && isInputChanged) {
+          setIsBtnActive(true);
+        } else {
+          setIsBtnActive(false);
+        }
+      }, [isInputChanged, isValid])
 
+      //Сравнение для email 
+      useEffect(() => {
+        if (email) {
+          if (validator.isEmail(email)) {
+            setErrorMessageEmail('');
+          } else {
+            setIsValid(false);
+            setIsBtnActive(false);
+            setErrorMessageEmail('Введите корректный email');
+          }
+        } else {
+          setErrorMessageEmail('');
+        }
+      }, [email, isBtnActive])
 
-    function handleName(e) {
+      
+      function handleName(e) {
         setName(e.target.value);
-        const errorMessage = e.target.validationMessage;
-        setErrors({...errors, name: errorMessage});
-    }
+        setErrorMessageName(e.target.validationMessage);
+        //Сравнение для имени 
+        if (e.target.value !== currentUser.data.name) {
+          setIsInputChanged(true);
+        } else {
+          setIsInputChanged(false);
+        }
+      }
 
-    function handleEmail(e) {
+
+      function handleEmail(e) {
         setEmail(e.target.value);
-        const errorTarget = e.target.validationMessage;
-        setErrors({...errors, email: errorTarget});
-    }
+        setErrorMessageEmail(e.target.validationMessage);
+        //Сравнение для email 
+        if (e.target.value !== currentUser.data.email) {
+          setIsInputChanged(true);
+        } else {
+          setIsInputChanged(false);
+        }
+      }
 
-    /*Выход*/
-
-    function exitButton() {
-        onSignOut();
-    }
-
-    function callbackMessage(message, okStatus) {
+      function callbackMessage(message, okStatus) {
         setMessage(message);
         setOkStatus(okStatus);
     }
 
-    function handleSubmit(e) {
-        // Запрещаем браузеру переходить по адресу формы
+      function handleSubmit(e) {
+         // Запрещаем браузеру переходить по адресу формы
         e.preventDefault();
         // Передаём значения управляемых компонентов и коллбек-функцию во внешний обработчик
         handleUpdateUser({
             name,
             email,
             callbackError: callbackMessage,
-        });
+        })
+      }
+    
+     /*Выход*/
 
+    function exitButton() {
+        onSignOut();
     }
-
-
+    
     return (
         <section className="profile">
             <Heading/>
             <section className="profileForm">
                 <h1 className="profileForm__title">Привет, {name}!</h1>
-                <form className="profileForm__form" onSubmit={handleSubmit}>
+                <form className="profileForm__form"  onChange={validationForm}>
                     <div className="profileForm__form-bloks">
                         <p className="profileForm__form_text">Имя</p>
                         <input
@@ -90,8 +119,10 @@ function Profile({handleUpdateUser, onSignOut}) {
                             maxLength={30}
                             id="mame"
                             required
+                            pattern="^[A-Za-zА-Яа-яЁё\-\s]+$"
                         />
                     </div>
+                    <span className="profileForm__text-error">{errorMessageName}</span>
                     <hr
                         className="profileForm__line"
                         width="89%"
@@ -113,8 +144,9 @@ function Profile({handleUpdateUser, onSignOut}) {
                             required
                         />
                     </div>
+                    <span className="profileForm__text-error">{errorMessageEmail}</span>
                     <span className={`profileForm__request-result${okStatus ? "" : "_error"}`}>{message}</span>
-                    <button type="submit" className={`profileForm__edit${formValid ? '' : '_disabled'}`}>
+                    <button type="submit"  onClick={handleSubmit} disabled={!isBtnActive} className={`profileForm__edit${isBtnActive ? '' : '_disabled'}`}>
                         Редактировать
                     </button>
                 </form>

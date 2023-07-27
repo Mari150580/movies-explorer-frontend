@@ -8,7 +8,7 @@ import apiMovies from "../../utils/MoviesApi";
 import CardList from "./CardList/CardList";
 import Preloader from "../Preloader/Preloader";
 
-function Movies({savedMovies, setSavedMovies}) {
+function Movies({savedMovies, setSavedMovies,}) {
     const [moviesCount, setMoviesCount] = useState(0);
     const [moreMoviesCount, setMoreMoviesCount] = useState(0);
     const [shownMovies, setShownMovies] = useState([]);
@@ -44,12 +44,16 @@ function Movies({savedMovies, setSavedMovies}) {
     }, []);
 
     
+
+    
     useEffect(() => {
         if (shownMovies.length < moviesCount && currentSearchString) handleSearch(currentSearchString).then(() => {});
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [moviesCount]);
 
     async function ToggleMovieLike(movie, isLiked) {
+        console.log(movie.id)
+        console.log(isLiked)
         if (!isLiked) {
             try {
                 const jwt = localStorage.getItem("jwt");
@@ -79,7 +83,9 @@ function Movies({savedMovies, setSavedMovies}) {
 
             try {
                 const jwt = localStorage.getItem("jwt");
+                console.log(jwt)
                 if (jwt) {
+
                     apiMovies.getToken(jwt);
                     await apiMovies.addSavedMovie(Movie);
                     const newSavedMovies = [...savedMovies, Movie];
@@ -140,7 +146,7 @@ function Movies({savedMovies, setSavedMovies}) {
 
     function handleMore() {
         let moviesToAdd = shownMovies.length % moreMoviesCount ?
-            moreMoviesCount*2 - shownMovies.length % moreMoviesCount : moreMoviesCount;
+            moreMoviesCount*1.5 - shownMovies.length % moreMoviesCount : moreMoviesCount;
 
         setShownMovies(shownMovies.concat(remainingMovies.slice(0, moviesToAdd)));
         setRemainingMovies(remainingMovies.slice(moviesToAdd));
@@ -150,7 +156,7 @@ function Movies({savedMovies, setSavedMovies}) {
         let cardsCount = 0, moreCardsCount = 0;
         const windowWidth = window.innerWidth;
         const countConfig = {
-            Phone: [0, 5, 5],
+            Phone: [0, 5, 2],
             Tablet: [560, 8, 2],
             SmallPC: [850, 12, 3],
             PC: [1138, 16, 4],

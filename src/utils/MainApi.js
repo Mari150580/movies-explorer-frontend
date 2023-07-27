@@ -33,7 +33,7 @@ const configs = {
          method: "GET",
          headers: this._headers,
        }).then((response) => {
-        console.log(response);
+       // console.log(response);
          return this.#onResponse(response);
        });
      }
@@ -50,6 +50,9 @@ const configs = {
          return this.#onResponse(response);
        });
      }
+
+
+    
 
 
    }

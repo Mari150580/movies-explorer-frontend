@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import {useState} from "react";
 import {AiOutlineClose, AiOutlineMenu} from "react-icons/ai";
 
-function Heading() {
+function Heading( ) {
     const [nav, setNav] = useState(false);
 
     return (

@@ -38,6 +38,7 @@ function Register({handleRegister, nameError}) {
             handleRegister(userData);
         }
     }
+    
 
     return (
         <div className="register">

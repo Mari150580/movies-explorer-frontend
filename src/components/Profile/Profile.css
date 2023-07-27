@@ -65,6 +65,18 @@
     width: 50%;
 }
 
+
+.profileForm__text-error{
+    color: red;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.2;
+    min-height: 12px;
+    display: block;
+    position: relative;
+    text-align: center;
+
+}
 .profileForm__edit,
 .profileForm__edit_disabled {
     font-weight: 400;

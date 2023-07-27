@@ -21,9 +21,25 @@ function App(resetValidation) {
     const [nameError, setNameError] = useState('')
     const [savedMovies, setSavedMovies] = useState([]);
     const [currentUser, setCurrentUser] = useState({});
+   
+
 
     /* Установка навигации */
     const navigate = useNavigate();
+
+     /* Регистрация */
+     function handleRegister({name, email, password}) {
+        return auth.register(name, email, password)
+       
+           .then((res) => {
+                setNameError('');
+                handleLogin({email, password});
+            })
+            .catch((error) => {
+                setNameError('Что то пошло не так');
+            })
+
+    }
 
     /* Логин, установка jwt токена, флага loggedIn для ProtectedRoute
     * и переадресация на movies*/
@@ -42,23 +58,8 @@ function App(resetValidation) {
             })
     }
 
-    /* Регистрация */
-    function handleRegister({name, email, password}) {
-        return auth.register(name, email, password)
-            .then((res) => {
-                navigate("/signin");
-                setNameError('');
-            })
-            .catch((error) => {
-                setNameError('Что то пошло не так');
-            })
 
-    }
-
-    /*Заход данных с сервера:
-    * --Информация о пользователе
-    * --Сохраненные пользователем фильмы
-   */
+    /*Заход данных с сервера*/
     useEffect(() => {
         const jwt = localStorage.getItem("jwt");
         if (jwt) {
@@ -78,6 +79,7 @@ function App(resetValidation) {
             setIsLoading(false);
         }
     }, [loggedIn]);
+
 
     /* проверка токена при загрузки страницы */
     useEffect(() => {
@@ -102,6 +104,7 @@ function App(resetValidation) {
     function handleUpdateUser({name, email, callbackError}) {
         let message = "";
         let okStatus = true;
+        console.log("name")
 
         apiMain
             .addNewProfile({
@@ -136,7 +139,13 @@ function App(resetValidation) {
             <div className="page">
                 <CurrentUserContext.Provider value={currentUser}>
                     <Routes>
-                        <Route path="/" element={<ProjectMy/>}/>
+                        <Route path="/" element={
+                        <ProjectMy
+                        loggedIn={loggedIn}
+                        isLoading={isLoading}
+                        />
+                    }
+                        />
                         <Route path="/signup"
                                element={
                                    <Register
@@ -161,7 +170,7 @@ function App(resetValidation) {
                                     loggedIn={loggedIn}
                                     isLoading={isLoading}
                                     savedMovies={savedMovies}
-                                    setSavedMovies={setSavedMovies}
+                                    setSavedMovies={setSavedMovies} 
                                 />}
 
                         />

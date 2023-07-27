@@ -18,7 +18,6 @@ function SearchForm({handleSearch, handleFilterChange, currentSearchString, filt
 
     /*Очистка формы*/
     const resetForms = (filmName = {}) => {
-        setSearchString('');
         setError('');
     };
 
@@ -46,7 +45,6 @@ function SearchForm({handleSearch, handleFilterChange, currentSearchString, filt
                         name="film"
                         placeholder="Фильм"
                         id="film"
-                        required
                         onChange={handleChange}
                         value={searchString || ""}
                     />
