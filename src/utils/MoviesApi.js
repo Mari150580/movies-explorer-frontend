@@ -55,15 +55,16 @@ export class MoviesApi {
     }
 
     /*загрузка на сервер новых данных о фильме*/
-    addSavedMovie(movieData) {
+    addSavedMovie( movieId) {
         return fetch(`${this._APIurl}/movies/`, {
             method: "POST",
             headers: this._APIheaders,
-            body: JSON.stringify(movieData),
+            body: JSON.stringify(movieId),
         }).then((response) => {
             return this.#onResponse(response);
         });
     }
+
 
     /*загрузка на сервер новых данных о фильме*/
     deleteSavedMovie(movieId) {
@@ -74,6 +75,8 @@ export class MoviesApi {
             return this.#onResponse(response);
         });
     }
+
+
 }
 
 const apiMovies = new MoviesApi(configs);

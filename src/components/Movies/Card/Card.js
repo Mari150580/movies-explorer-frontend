@@ -1,15 +1,17 @@
 import "../Card/Card.css";
 import React, {useEffect, useState} from "react";
 import Removal from "../../Removal/Removal";
-import { useRouteMatch } from 'react-router-dom';
+
 
 function Card({card, savedMovies, ToggleMovieLike, isSavedMovies}) {
     const [like, setLike] = useState(false);
 
     useEffect(() => {
+        
         const likedMovie = savedMovies.filter((movie) => {
-            return movie.movieId === card.id;
+           return movie.movieId === card.id;
         });
+        
         setLike(likedMovie.length > 0 ? true : false);
     }, [savedMovies, card.id]);
 
@@ -23,10 +25,9 @@ function Card({card, savedMovies, ToggleMovieLike, isSavedMovies}) {
     function handleLikeToggle() {
         // Получаем из всех сохраненных фильмов фильм с таким же id (если есть)
         const likedMovie = savedMovies.filter((movie) => {
-            console.log(card.id)
             return movie.movieId === card.id;
-            
         });
+
         /* Если в списке что-то есть, значит он нашелся - лайк снимаем,
         * иначе ставим (и тогда передавать _id необходимости нет) */
         ToggleMovieLike({...card, _id: likedMovie.length > 0 ? likedMovie[0]._id : null}, !like);
@@ -36,41 +37,7 @@ function Card({card, savedMovies, ToggleMovieLike, isSavedMovies}) {
     * соответственно ToggleMovieLike может работать только как false*/
     function handleLikeRemoval() {
         ToggleMovieLike(card);
-        console.log(ToggleMovieLike)
-        console.log(card.movieId)
     }
-
-    /*const { path } = useRouteMatch();
-
-    const [isLiked, setIsLiked] = useState(false);
-
-    function toggleLike() {
-        if (!isLiked) {
-          setIsLiked(true);
-        } else {
-          setIsLiked(false);
-        }
-      }
-
-      useEffect(() => {
-        if (path === '/movies') {
-          // eslint-disable-next-line array-callback-return
-          savedMovies.some((item) => {
-            if (item.movieId === card.id) {
-              setIsLiked(true);
-              document.getElementById(card.id).checked = true
-            }
-          })
-        }
-      }, [])
-
-      function handleButtonDel() {
-        handleBtnDelete(card._id);
-      }
-*/
-
-
-
 
     return (
         <article className="element">
