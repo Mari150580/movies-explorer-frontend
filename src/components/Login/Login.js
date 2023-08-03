@@ -4,11 +4,26 @@ import "../Register/Register.css";
 import "../Login/Login.css";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
-function Login({ handleLogin }) {
+
+function Login({ handleLogin, nameError }) {
   const [userData, setUserData] = useState({});
-  const [errors, setErrors] = useState({ email: "", password: "" });
+  const [errors, setErrors] = useState({email: "initial", password: "initial"});
   const [formValid, setFormValid] = useState(false);
+
+  /* Установка навигации */
+  const navigate = useNavigate();
+
+  /*блокировка ручного перехода*/
+  useEffect(() => {
+    const jwt = localStorage.getItem("jwt");
+    if(jwt){
+      navigate("/movies");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); 
+
 
   /* Как только ошибки(ниже) меняются, необходимо валидировать форму */
   useEffect(() => {
@@ -52,7 +67,7 @@ function Login({ handleLogin }) {
           minLength={2}
           maxLength={30}
           id="email"
-          required
+          //required
           value={userData.email || ""}
           onChange={handleChange}
         />
@@ -67,12 +82,13 @@ function Login({ handleLogin }) {
           minLength={4}
           maxLength={30}
           id="password"
-          required
+          //required
           value={userData.password || ""}
           onChange={handleChange}
         />
         <span className="profileForm__text-error">{errors.password}</span>
         <hr className="login__form-email_line"></hr>
+        <span className="register__form-error">{nameError}</span>
         <button
           className={`register__form-button${formValid ? "" : "_disabled"}`}
           type="submit"

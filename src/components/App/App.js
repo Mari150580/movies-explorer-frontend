@@ -149,7 +149,12 @@ function App(resetValidation) {
             />
             <Route
               path="/signin"
-              element={<Login handleLogin={handleLogin} />}
+              element={
+              <Login 
+              handleLogin={handleLogin} 
+              nameError={nameError}
+              />
+            }
             />
             <Route
               path="/movies"
@@ -185,6 +190,7 @@ function App(resetValidation) {
                   isLoading={isLoading}
                   onSignOut={onSignOut}
                   handleUpdateUser={handleUpdateUser}
+                  nameError={nameError}
                 />
               }
             />

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext/CurrentUserContext";
 import validator from "validator";
 
-function Profile({ handleUpdateUser, onSignOut }) {
+function Profile({ handleUpdateUser, onSignOut, nameError }) {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [okStatus, setOkStatus] = React.useState(true);
@@ -143,6 +143,7 @@ function Profile({ handleUpdateUser, onSignOut }) {
             />
           </div>
           <span className="profileForm__text-error">{errorMessageEmail}</span>
+          <span className="register__form-error">{nameError}</span>
           <span
             className={`profileForm__request-result${okStatus ? "" : "_error"}`}
           >

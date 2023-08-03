@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import logo from "../../images/logo__COLOR_main-1.svg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 function Register({ handleRegister, nameError }) {
   const [userData, setUserData] = useState({
@@ -14,10 +15,22 @@ function Register({ handleRegister, nameError }) {
   const [errors, setErrors] = useState({ name: "", email: "", password: "" });
   const [formValid, setFormValid] = useState(false);
 
+   /* Установка навигации */
+   const navigate = useNavigate();
+
+   /*блокировка ручного перехода*/
+   useEffect(() => {
+    const jwt = localStorage.getItem("jwt");
+    if(jwt){
+      navigate("/movies");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); 
+
   useEffect(() => {
     const formValid = Object.values(errors).every((error) => error === "");
     setFormValid(formValid);
-  }, [errors]);
+  }, [errors]); 
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -58,7 +71,7 @@ function Register({ handleRegister, nameError }) {
           minLength={2}
           maxLength={30}
           id="name"
-          required
+         // required
           pattern="^[A-Za-zА-Яа-яЁё\-\s]+$"
           value={userData.name || ""}
           onChange={handleChange}
@@ -74,7 +87,7 @@ function Register({ handleRegister, nameError }) {
           maxLength={30}
           id="email"
           pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,5}$"
-          required
+         // required
           value={userData.email || ""}
           onChange={handleChange}
         />
@@ -88,7 +101,7 @@ function Register({ handleRegister, nameError }) {
           minLength={4}
           maxLength={30}
           id="password"
-          required
+         // required
           value={userData.password || ""}
           onChange={handleChange}
         />

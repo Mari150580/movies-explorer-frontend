@@ -92,15 +92,14 @@ function Movies({ savedMovies, setSavedMovies }) {
     }
   }
 
-  /* Корректировка, делает фильтрацию, согласно критериям, лучше */
-  useEffect(() => {
-    // Пытаемся достать карточки из localStorage (получали с сервера)
-    let cards = JSON.parse(localStorage.getItem("cards"));
-    if (cards) {
-      localStorage.setItem("filterEnabled", JSON.stringify(filterEnabled));
-      handleSearch(currentSearchString).then(() => {});
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    /* Корректировка, делает фильтрацию, согласно критериям, лучше */
+    useEffect(() => {
+      // Пытаемся достать карточки из localStorage (получали с сервера)
+      let cards = JSON.parse(localStorage.getItem("cards"));
+      if (cards) {
+          handleSearch(currentSearchString).then(() => {});
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterEnabled]);
 
   async function handleSearch(inputString) {
@@ -133,8 +132,10 @@ function Movies({ savedMovies, setSavedMovies }) {
       }
     }
 
-    localStorage.setItem("currentSearchString", inputString);
-    localStorage.setItem("filterEnabled", JSON.stringify(filterEnabled));
+    if(inputString) {
+      localStorage.setItem("currentSearchString", inputString);
+      setCurrentSearchString(inputString);
+  }
 
     let filteredMovies = cards.filter(
       ({ nameRU, nameEN, description }) =>
@@ -147,7 +148,6 @@ function Movies({ savedMovies, setSavedMovies }) {
       filteredMovies = filteredMovies.filter(({ duration }) => duration <= 40);
     }
 
-    setCurrentSearchString(inputString);
     setShownMovies([...filteredMovies.slice(0, moviesCount)]);
     setRemainingMovies([...filteredMovies.slice(moviesCount)]);
     setPreloader(false);
@@ -157,6 +157,7 @@ function Movies({ savedMovies, setSavedMovies }) {
    * совпадает с состоянием информации о фильтре, это надо исправить. */
   function handleFilterChange(isFiltered) {
     if (isFiltered !== filterEnabled) {
+      localStorage.setItem("filterEnabled", JSON.stringify(isFiltered));
       setFilterEnabled(isFiltered);
     }
   }
