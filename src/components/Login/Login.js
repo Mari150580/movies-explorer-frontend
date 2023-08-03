@@ -12,7 +12,6 @@ function Login({ handleLogin, nameError }) {
   const [errors, setErrors] = useState({email: "initial", password: "initial"});
   const [formValid, setFormValid] = useState(false);
 
-  /* Установка навигации */
   const navigate = useNavigate();
 
   /*блокировка ручного перехода*/
