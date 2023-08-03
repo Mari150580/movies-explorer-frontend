@@ -162,7 +162,7 @@ function App(resetValidation) {
                 <ProtectedRoute
                   component={Movies}
                   loggedIn={loggedIn}
-                  isLoading={isLoading}
+                  isLoading={isLoading}  
                   savedMovies={savedMovies}
                   setSavedMovies={setSavedMovies}
                 />

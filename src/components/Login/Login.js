@@ -57,7 +57,7 @@ function Login({ handleLogin, nameError }) {
         </Link>
         <h1 className="register__title">Рады видеть!</h1>
       </header>
-      <form className="register__form" onSubmit={handleSubmit}>
+      <form className="register__form" onSubmit={handleSubmit} noValidate={true}>
         <h3 className="register__form-title">email</h3>
         <input
           type="email"
@@ -67,7 +67,7 @@ function Login({ handleLogin, nameError }) {
           minLength={2}
           maxLength={30}
           id="email"
-          //required
+          required
           value={userData.email || ""}
           onChange={handleChange}
         />
@@ -82,7 +82,7 @@ function Login({ handleLogin, nameError }) {
           minLength={4}
           maxLength={30}
           id="password"
-          //required
+          required
           value={userData.password || ""}
           onChange={handleChange}
         />

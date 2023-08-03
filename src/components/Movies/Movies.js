@@ -16,7 +16,7 @@ function Movies({ savedMovies, setSavedMovies }) {
   const [preloader, setPreloader] = useState(false);
   const [filterEnabled, setFilterEnabled] = useState(false);
   const [currentSearchString, setCurrentSearchString] = useState("");
-  const [searchErrorMessage, setSearchErrorMessage] = useState(false);
+  const [searchErrorMessage, setSearchErrorMessage] = useState(false); 
 
   /* Каждый раз, когда меняется размер окна -
    * надо заново решить, по сколько карточек за
