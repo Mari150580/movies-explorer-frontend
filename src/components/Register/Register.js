@@ -27,13 +27,8 @@ function Register({handleRegister, nameError}) {
         setErrors({...errors, [name]: errorMessage});
     }
 
-   /* function resetValidation(userData = {}) {
-        setUserData(userData);
-    };*/
-
     function handleSubmit(e) {
         e.preventDefault();
-        //resetValidation();
 
         if (userData) {
             handleRegister(userData);
