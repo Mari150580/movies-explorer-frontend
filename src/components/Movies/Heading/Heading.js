@@ -8,6 +8,8 @@ import {AiOutlineClose, AiOutlineMenu} from "react-icons/ai";
 function Heading( ) {
     const [nav, setNav] = useState(false);
 
+    const getMoviesUrl = window.location.pathname;
+
     return (
         <header className="heading">
             <Link to="/" className="heading__logo_link">
@@ -24,17 +26,19 @@ function Heading( ) {
                         <img src={logo} alt="Логотип" className="heading__logo"/>
                         <p className="heading__logo_text">Главная</p>
                     </Link>
-                    <Link className="heading__link" to="/movies">
+                    <Link className={`heading__link${getMoviesUrl === "/movies" ? "_activ" : ""}`} to="/movies">
                         {" "}
                         Фильмы{" "}
                     </Link>
-                    <Link className="heading__regicter" to="/saved-movies">
-                        Сохранённые фильмы
+                    <Link className={`heading__regicter${getMoviesUrl === "/saved-movies" ? "_activ" : ""}`} to="/saved-movies">
+                    {" "}
+                    Сохранённые фильмы{" "}
+                        
                     </Link>
                 </div>
 
                 <div className="heading__login">
-                    <p className="heading__account">Аккаунт</p>
+                    <p  className={`heading__account${getMoviesUrl === "/profile" ? "_activ" : ""}`}>Аккаунт</p>
                     <Link to="/profile">
                         <button className="heading__button" type="submit">
                             <img src={manikin} alt="Логотип" className="heading__manikin"/>

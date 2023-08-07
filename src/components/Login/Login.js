@@ -4,24 +4,12 @@ import "../Register/Register.css";
 import "../Login/Login.css";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
 
 
 function Login({ handleLogin, nameError }) {
   const [userData, setUserData] = useState({});
   const [errors, setErrors] = useState({email: "initial", password: "initial"});
   const [formValid, setFormValid] = useState(false);
-
-  const navigate = useNavigate();
-
-  /*блокировка ручного перехода*/
-  useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
-    if(jwt){
-      navigate("/movies");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); 
 
 
   /* Как только ошибки(ниже) меняются, необходимо валидировать форму */

@@ -12,6 +12,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import * as auth from "../../utils/auth";
 import apiMain from "../../utils/MainApi";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import UnauthorizedRoute from "../UnauthorizedRoute/UnauthorizedRoute";
 import apiMovies from "../../utils/MoviesApi";
 
 function App(resetValidation) {
@@ -141,7 +142,8 @@ function App(resetValidation) {
             <Route
               path="/signup"
               element={
-                <Register
+                <UnauthorizedRoute
+                  component ={Register} 
                   handleRegister={handleRegister}
                   nameError={nameError}
                 />
@@ -150,7 +152,8 @@ function App(resetValidation) {
             <Route
               path="/signin"
               element={
-              <Login 
+              <UnauthorizedRoute
+              component ={Login}  
               handleLogin={handleLogin} 
               nameError={nameError}
               />

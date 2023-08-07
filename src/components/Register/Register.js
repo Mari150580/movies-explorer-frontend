@@ -4,7 +4,6 @@ import React, {useEffect} from "react";
 import logo from "../../images/logo__COLOR_main-1.svg";
 import {Link} from "react-router-dom";
 import {useState} from "react";
-import { useNavigate } from 'react-router-dom';
 
 function Register({handleRegister, nameError}) {
     const [userData, setUserData] = useState({
@@ -14,20 +13,6 @@ function Register({handleRegister, nameError}) {
     });
     const [errors, setErrors] = useState({name: "initial", email: "initial", password: "initial"});
     const [formValid, setFormValid] = useState(false);
-
-    /* Установка навигации */
-   const navigate = useNavigate();
-
-   /*блокировка ручного перехода*/
-   useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
-    if(jwt){
-      navigate("/movies");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); 
-
-
 
     /* Процесс валидации такой же, как в Login.js */
     useEffect(() => {

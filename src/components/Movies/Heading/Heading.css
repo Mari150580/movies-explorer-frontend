@@ -31,7 +31,7 @@
     opacity: 50%;
 }
 
-.heading__link {
+.heading__link_activ {
     margin-left: 44px;
     margin-right: 16px;
     margin-top: 28px;
@@ -44,6 +44,21 @@
     color: #000000;
     text-decoration: none;
 }
+
+.heading__link {
+    font-weight: 400;
+    margin-left: 44px;
+    margin-right: 16px;
+    margin-top: 28px;
+    margin-bottom: 28px;
+    font-family: "Inter";
+    font-style: normal;
+    font-size: 13px;
+    line-height: 18px;
+    color: #000000;
+    text-decoration: none;
+}
+
 
 .heading__link:hover {
     opacity: 50%;
@@ -60,6 +75,17 @@
     text-decoration: none;
 }
 
+.heading__regicter_activ {
+    margin: 28px 0 28px 0;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    color: #000000;
+    text-decoration: none;
+}
+
 .heading__regicter:hover {
     opacity: 50%;
 }
@@ -68,10 +94,19 @@
     display: flex;
 }
 
-.heading__account {
+.heading__account_activ {
     font-family: "Inter";
     font-style: normal;
     font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 28px 13px 28px 0;
+}
+
+.heading__account {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
     font-size: 14px;
     line-height: 16px;
     margin: 28px 13px 28px 0;
