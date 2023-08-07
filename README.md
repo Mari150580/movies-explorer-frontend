@@ -7,5 +7,5 @@ https://www.figma.com/file/nijTk44tv2GGS20xmMfTey/Diploma?node-id=35760%3A37434&
 ## ссылка на фронтенд:
 https://filmography.nomoredomains.rocks
 
-## ссылка на pull request:
+### ссылка на pull request:
 https://github.com/Mari150580/movies-explorer-frontend/pull/7
