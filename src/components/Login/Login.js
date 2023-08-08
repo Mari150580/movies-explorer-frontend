@@ -2,15 +2,16 @@ import "../Movies/Heading/Heading";
 import logo from "../../images/logo__COLOR_main-1.svg";
 import "../Register/Register.css";
 import "../Login/Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
-
-function Login({ handleLogin, nameError }) {
+function Login({ handleLogin, nameError, loggedIn }) {
   const [userData, setUserData] = useState({});
-  const [errors, setErrors] = useState({email: "initial", password: "initial"});
+  const [errors, setErrors] = useState({
+    email: "initial",
+    password: "initial",
+  });
   const [formValid, setFormValid] = useState(false);
-
 
   /* Как только ошибки(ниже) меняются, необходимо валидировать форму */
   useEffect(() => {
@@ -36,6 +37,18 @@ function Login({ handleLogin, nameError }) {
     handleLogin(userData, errors).then(() => {});
   }
 
+  /*блокировка ручного перехода*/
+
+  /* Установка навигации */
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loggedIn) {
+      console.log(loggedIn);
+      navigate("/movies");
+    }
+  }, [loggedIn, navigate]);
+
   return (
     <div className="register">
       <header className="register__heading">
@@ -44,7 +57,11 @@ function Login({ handleLogin, nameError }) {
         </Link>
         <h1 className="register__title">Рады видеть!</h1>
       </header>
-      <form className="register__form" onSubmit={handleSubmit} noValidate={true}>
+      <form
+        className="register__form"
+        onSubmit={handleSubmit}
+        noValidate={true}
+      >
         <h3 className="register__form-title">email</h3>
         <input
           type="email"
